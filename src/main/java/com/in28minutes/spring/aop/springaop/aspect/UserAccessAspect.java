@@ -11,12 +11,13 @@ import org.springframework.context.annotation.Configuration;
 //Configuration
 @Aspect
 @Configuration
-public class UseAccessAspect {
+public class UserAccessAspect {
 	
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	//What kind of method calls I would intercept
 	//execution(* PACKAGE.*.*(..))
+	
 	
 	@Before("execution(* com.in28minutes.spring.aop.springaop.business.*.*(..))")//in the package specified, any class, any method with any kind/number of arguments. 
 	public void before(JoinPoint joinPoint){
