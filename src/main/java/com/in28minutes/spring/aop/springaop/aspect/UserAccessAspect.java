@@ -7,6 +7,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
 
+//import net.bytebuddy.asm.Advice;
+
 //AOP
 //Configuration
 @Aspect
@@ -18,9 +20,11 @@ public class UserAccessAspect {
 	//What kind of method calls I would intercept
 	//execution(* PACKAGE.*.*(..))
 	
-	
-	@Before("execution(* com.in28minutes.spring.aop.springaop.business.*.*(..))")//in the package specified, any class, any method with any kind/number of arguments. 
+	//@Before is an advice type which ensures that an advice runs before the method execution.
+	//The below annotation intersects all calls inside the sub package 'business'
+	@Before("execution(* com.in28minutes.spring.aop.springaop.data.*.*(..))")//in the package specified, any class, any method with any kind/number of arguments. 
 	public void before(JoinPoint joinPoint){
+		/*The below code snipper it called Advice. This is what is done when the @Before execution happens*/
 		logger.info(" Check for user access ");
 		logger.info(" Allowed execution for {}", joinPoint);
 	}
